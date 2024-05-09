@@ -22,19 +22,19 @@ $login = function () {
 
 ?>
 
-<div>
-    <!-- Session Status -->
+<div class=" text-black ">
+
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form wire:submit="login">
-        <!-- Email Address -->
+    <form wire:submit="login" class=" text-black">
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            
+            <x-input-label for="email" class="text-black" :value="__('Email')" />
             <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
         </div>
 
-        <!-- Password -->
+
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
@@ -46,7 +46,7 @@ $login = function () {
             <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
+
         <div class="block mt-4">
             <label for="remember" class="inline-flex items-center">
                 <input wire:model="form.remember" id="remember" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
