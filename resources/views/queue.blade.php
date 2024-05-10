@@ -11,7 +11,10 @@
                         <div class="bg-blue-500 h-20 w-20">q2</div>
                         <div class="bg-green-500 h-20 w-20">q1</div>
                     </div>
-                    <button class="btn text-right right-0 ">Pesanan Selesai</button>
+                    <div class="flex justify-end">
+
+                        <button class="btn text-right right-0 bg-blue-600 px-4 rounded-full ">Pesanan Selesai</button>
+                    </div>
                 </div>
             </div>
         </div>
