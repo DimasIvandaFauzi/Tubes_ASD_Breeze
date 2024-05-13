@@ -10,7 +10,7 @@ Route::get('/menu', [MenuController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('menu');
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard', [MenuController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 

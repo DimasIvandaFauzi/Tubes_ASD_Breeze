@@ -13,9 +13,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menus::all();
-        return view ('menu', ['menus' => $menu]);
-        dd($menu);
+        $data = MenusModel::orderBy('id','asc')->get();
+        // dd($data);
+        return view ('dashboard', compact('data'));
     }
 
     /**
