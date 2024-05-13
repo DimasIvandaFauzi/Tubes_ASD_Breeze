@@ -21,22 +21,23 @@
                             </thead>
                             <tbody class=" text-lg ">
                             <!-- row 1 -->
+                            @foreach ($menu as $data)
                             <tr class="">
-                                <th>1</th>
-                                <td>01</td>
-                                <td>Penyetan Tempe</td>
-                                <td>5000</td>
+                                <td> {{$data->'id'}}</td>
+                                <td>{{$data->'nama'}}</td>
+                                <td>{{$data->harga}}</td>
                                 <td><input type="text" class="px-1 py-0 w-10 h-8 bg-transparent focus:border-white focus:ring-white"></td>
                                 
                             </tr>
-                            <tr>
+                            @endforeach
+                            {{-- <tr>
                                 <th>2</th>
                                 <td>02</td>
                                 <td>Penyetan Tempe dasda</td>
                                 <td>50000</td>
                                 <td><input type="text" class="px-1 py-0 w-10 h-8 bg-transparent focus:border-white focus:ring-white"></td>
                             </tr>
-                            
+                             --}}
                             </tbody>
                         </table>
                         <div class="flex justify-end">    
