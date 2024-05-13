@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Menu\MenuController;
+use App\Http\Controllers\MenuController;
 
 
 Route::view('/', 'home');
 
-
+Route::get('/menu', [MenuController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('menu');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
