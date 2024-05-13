@@ -27,6 +27,7 @@ $login = function () {
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login" class=" text-black">
+        <h1 class="text-center text-white text-4xl">Log In</h1>
         <div>
             
             <x-input-label for="email" class="text-black" :value="__('Email')" />

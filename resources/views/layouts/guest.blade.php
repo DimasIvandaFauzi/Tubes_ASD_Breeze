@@ -14,9 +14,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans  antialiased ">
+    <body class="font-sans antialiased font-semibold">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white dark:bg-gray-800" >
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 outline-black outline hover:shadow-2xl bg-white dark:bg-gray-900 hover:scale-105 ease-in-out duration-100  shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 outline-white outline hover:shadow-2xl bg-white dark:bg-gray-900 hover:scale-105 ease-in-out duration-200 delay-75  shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>
