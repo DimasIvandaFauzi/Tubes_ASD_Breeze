@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MenusModel;
+use Inertia\Inertia;
 
 class MenuController extends Controller
 {
@@ -13,9 +14,11 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $data = MenusModel::orderBy('id','asc')->get();
+        $data = Menusmodel::orderBy('id')->get();
         // dd($data);
-        return view ('dashboard', compact('data'));
+        return Inertia::render('Dashboard', [
+            'menus' => $data
+        ]);
     }
 
     /**
