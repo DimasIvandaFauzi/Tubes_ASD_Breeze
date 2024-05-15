@@ -1,23 +1,15 @@
 import Navbar from "@/Components/Navbar";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 
-export default function Dashboard({ auth, menus }) {
-    const [counts, setCounts] = useState(menus.map(() => 0)); // Inisialisasi state untuk count setiap menu
 
-    const handleIncrement = (index) => {
-        setCounts(counts.map((count, i) => (i === index ? count + 1 : count)));
-    };
-
-    const handleDecrement = (index) => {
-        setCounts(
-            counts.map((count, i) =>
-                i === index ? Math.max(count - 1, 0) : count
-            )
-        ); // Menghindari nilai negatif
-    };
-
+export default function Dashboard({ auth, menus, menuDetail }) {
+    console.log('data tambahMenu', menuDetail);
+    const addMenu = (id) => {
+        Inertia.get('/tambahMenu', { id });
+      };
     return (
         <>
             <div className="flex w-full ">
@@ -43,9 +35,9 @@ export default function Dashboard({ auth, menus }) {
                                         {menu.harga}
                                     </p>
                                     <div className="mt-3">
-                                        <button className="px-3 rounded-lg text-white bg-gray-800 py-2 text-sm">
-                                            Add to cart
-                                        </button>
+                                            <button className="px-3 rounded-lg text-white bg-gray-800 py-2 text-sm" onClick={() => addMenu(menu.id)}>
+                                                Add to cart
+                                            </button>
                                     </div>
                                 </div>
                             </div>
@@ -60,17 +52,24 @@ export default function Dashboard({ auth, menus }) {
                 <div className=" h-screen top-0 bg-white w-4/12 shadow-l fixed right-0 p-3">
                     <h1 className=" font-extrabold text-3xl mb-3 mt-3 ">Order</h1>
                     <div className="h-3/4 overflow-x-hidden">
-                        <div className=" outline-1 rounded-lg shadow-md flex justify-between p-2">
-                            <div className="">
-                                <h1 className=" font-semibold">Nama Makanan</h1>
-                                <p>Harga Makanan</p>
+                        {menuDetail ? (
+                           <div className=" outline-1 rounded-lg shadow-md flex justify-between p-2">
+                           <div className="">
+                               <h1 className=" font-semibold">{menuDetail.nama}</h1>
+                               <p>{menuDetail.harga}</p>
+                           </div>
+                           <div className=" items-center flex justify-center mr-4 text-lg">
+                               <button className="mr-1">-</button>
+                               <span className="mx-1">0</span>
+                               <button>+</button>
+                           </div>
+                       </div> 
+                        ) : (
+
+                            <div className=" outline-1 rounded-lg shadow-md flex justify-between p-2">
+                            Blom ada order
                             </div>
-                            <div className=" items-center flex justify-center mr-4 text-lg">
-                                <button className="mr-1">-</button>
-                                <span className="mx-1">2</span>
-                                <button>+</button>
-                            </div>
-                        </div>
+                        )}
                     </div>
                     <div className="flex justify-center items-center w-full">
                     <button className=" bg-gray-800 items-center text-center font-bold w-full rounded-full text-white py-1 mt-4 text-lg">Buat</button>

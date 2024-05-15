@@ -36,7 +36,7 @@ const Navbar = ({user}) => {
                                     <span className="inline-flex rounded-md">
                                         <button
                                             type="button"
-                                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black bg-white focus:outline-none transition ease-in-out duration-150"
+                                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black bg-white focus:outline-none transition ease-in-out duration-150 capitalize"
                                         >
                                             {user.name}
                                             <svg

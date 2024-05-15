@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MenusModel;
+use App\Models\MenuModel;
 use Inertia\Inertia;
 
 class MenuController extends Controller
@@ -68,4 +69,18 @@ class MenuController extends Controller
     {
         //
     }
+    public function tambahMenu( Request $request)
+    {
+        $menus = Menusmodel::orderBy('id')->get();
+        $menu = null;
+        if ($request->has('id')) {
+            $menu = MenusModel::find($request->id);
+        }
+        return Inertia::render('Dashboard',[
+            'menuDetail' => $menu->find($request->id),
+            'menus' => $menus
+
+        ]);
+    }
+
 }
