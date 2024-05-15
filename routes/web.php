@@ -15,6 +15,9 @@ Route::get('/', function(){
     ]);
 });
 
+Route::get('/queue', function(){
+    return Inertia::render('Queue');
+})->middleware(['auth', 'verified'])->name('tambahMenu');
 Route::get('/tambahMenu', [MenuController::class, 'tambahMenu'])  ->middleware(['auth', 'verified'])->name('tambahMenu');
 Route::get('/dashboard', [MenuController::class, 'index']) ->middleware(['auth', 'verified'])->name('dashboard');
 

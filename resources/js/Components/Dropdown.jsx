@@ -4,7 +4,7 @@ import { Transition } from '@headlessui/react';
 
 const DropDownContext = createContext();
 
-const Dropdown = ({ children }) => {
+const  Dropdown = ({ children }) => {
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {

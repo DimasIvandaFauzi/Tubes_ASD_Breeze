@@ -7,7 +7,6 @@ import Dropdown from "./Dropdown";
 
 const Navbar = ({user}) => {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-    console.log('data dari navbar', user)
     return (
         <nav className="bg-white  text-black z-40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
