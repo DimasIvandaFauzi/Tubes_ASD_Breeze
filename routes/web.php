@@ -15,7 +15,9 @@ Route::get('/', function(){
     ]);
 });
 
+Route::get('/tambahMenu', [MenuController::class, 'tambahMenu'])  ->middleware(['auth', 'verified'])->name('tambahMenu');
 Route::get('/dashboard', [MenuController::class, 'index']) ->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
