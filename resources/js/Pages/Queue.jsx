@@ -14,7 +14,10 @@ const queue = ({auth}) => {
                         <div className=" w-32 h-32 bg-green-300">q2</div>
                         <div className=" w-32 h-32 bg-red-300">q1</div>
                         
-                        </div>   
+                        </div>
+                        <div className="flex justify-end mt-3">
+                            <button className="bg-gray-900 px-2 text-white rounded-lg py-1 mr-3">Pesanan Selesai</button>
+                        </div>
                     </div>
                 </div>
             </div>

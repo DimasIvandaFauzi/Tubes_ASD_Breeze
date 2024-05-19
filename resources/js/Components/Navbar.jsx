@@ -55,6 +55,9 @@ const Navbar = ({user}) => {
                                 </Dropdown.Trigger>
 
                                 <Dropdown.Content>
+                                    <Dropdown.Link href={route("queue")}>
+                                        Queue
+                                    </Dropdown.Link>
                                     <Dropdown.Link href={route("profile.edit")}>
                                         Profile
                                     </Dropdown.Link>
