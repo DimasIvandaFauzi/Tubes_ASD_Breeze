@@ -65,7 +65,6 @@ export default function Dashboard({ auth, menus, menuDetail }) {
                            </div>
                        </div> 
                         ) : (
-
                             <div className=" outline-1 rounded-lg shadow-md flex justify-between p-2">
                             Blom ada order
                             </div>
