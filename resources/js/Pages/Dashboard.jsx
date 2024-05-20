@@ -1,5 +1,5 @@
 import Navbar from "@/Components/Navbar";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+    import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
@@ -59,6 +59,7 @@ export default function Dashboard({ auth, menus, menuDetail }) {
                                <p>{menuDetail.harga}</p>
                            </div>
                            <div className=" items-center flex justify-center mr-4 text-lg">
+                                <span></span>
                                <button className="mr-1">-</button>
                                <span className="mx-1">0</span>
                                <button>+</button>
