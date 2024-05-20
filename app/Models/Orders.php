@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MenusModel extends Model
+class Orders extends Model
 {
     use HasFactory;
-    protected $table = 'menus';
-    
+
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+
     public function DetailOrders(){
         return $this->belongsTo(DetailOrders::class);
     }
