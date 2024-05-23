@@ -35,7 +35,7 @@ export default function Dashboard({ auth, menus, menuDetail }) {
                                         {menu.harga}
                                     </p>
                                     <div className="mt-3">
-                                            <button className="px-3 rounded-lg text-white bg-gray-800 py-2 text-sm" onClick={() => addMenu(menu.id)}>
+                                            <button className="px-3 rounded-lg text-white bg-gray-800 py-2 text-sm" >
                                                 Add to cart
                                             </button>
                                     </div>
