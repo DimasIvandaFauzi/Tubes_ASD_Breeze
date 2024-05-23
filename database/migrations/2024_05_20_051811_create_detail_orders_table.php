@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('detail_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("order_id")->constrained();
-            $table->foreignId("menu_id")->constrained();
+            $table->integer('order_id');
+            $table->integer('menu_id');
             $table->string("nama_menu");
             $table->integer("jumlah");
             $table->integer("total");
             $table->timestamps();
+            
+            $table->foreignId("order_id")->references('id')->on('orders')->onDelete('cascade');
+            $table->foreignId("menu_id")->references('id')->on('menu')->onDelete('cascade');
         });
     }
 

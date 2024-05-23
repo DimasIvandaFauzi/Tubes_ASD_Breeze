@@ -10,10 +10,10 @@ class Orders extends Model
     use HasFactory;
 
     public function User(){
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function DetailOrders(){
-        return $this->belongsTo(DetailOrders::class);
+        return $this->hasMany(DetailOrders::class);
     }
 }

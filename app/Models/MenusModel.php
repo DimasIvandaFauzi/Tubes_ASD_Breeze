@@ -11,6 +11,6 @@ class MenusModel extends Model
     protected $table = 'menus';
     
     public function DetailOrders(){
-        return $this->belongsTo(DetailOrders::class);
+        return $this->hasMany(DetailOrders::class);
     }
 }

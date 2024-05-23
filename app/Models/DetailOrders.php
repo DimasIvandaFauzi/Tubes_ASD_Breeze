@@ -9,12 +9,13 @@ class DetailOrders extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['jumlah'];
     public function orders(){
-        return $this->hasOne(Orders::class);
+        return $this->belongsTo(Orders::class);
     }
 
     public function menu(){
-        return $this->hasMany(MenusModel::class);
+        return $this->belongsTo(MenusModel::class);
     }
 }
 
