@@ -8,6 +8,7 @@ use App\Models\Orders;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class OrdersController extends Controller
 {
@@ -16,7 +17,12 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        
+        $data = Menusmodel::orderBy('id')->get();
+        // dd($data);
+        return Inertia::render('Dashboard', [
+            'menus' => $data,
+            
+        ]);
     }
 
     /**
@@ -35,18 +41,16 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'order_id' => 'required|exists:orders,id',
             'menu_id' => 'required|exists:menus,id',
             'jumlah' => 'required|integer|min:1',
         ]);
 
-        $order = Orders::find($validatedData['order_id']);
         $menu = MenusModel::find($validatedData['menu_id']);
         $total = $menu->harga * $validatedData['jumlah'];
 
         $user = Auth::user();
         $order = Orders::create([
-            'user_id' => $user->id
+            'user_id' => $user,
         ]);
 
         $detail = new DetailOrders();
@@ -56,8 +60,8 @@ class OrdersController extends Controller
         $detail->jumlah = $validatedData['jumlah'];
         $detail->total = $total;
         $detail->save();
-
         return response()->json(['message' => 'Detail order berhasil disimpan', 'detail_order'=>$detail],201);
+        
 
 
     }
@@ -65,9 +69,14 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $detail = DetailOrders::with('menu')->orderBy('id')->get();
+        $datas = Menusmodel::orderBy('id')->get();
+        return Inertia::render('Dashboard', [
+            'menus' => $datas,
+            'menuDetail' => $detail
+        ]);
     }
 
     /**
