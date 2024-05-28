@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OrdersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,8 +19,11 @@ Route::get('/', function(){
 Route::get('/queue', function(){
     return Inertia::render('Queue');
 })->middleware(['auth', 'verified'])->name('queue');
-Route::get('/tambahMenu', [MenuController::class, 'tambahMenu'])  ->middleware(['auth', 'verified'])->name('tambahMenu');
-Route::get('/dashboard', [MenuController::class, 'index']) ->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/tambahMenu', [OrdersController::class, 'store'])  ->middleware(['auth', 'verified'])->name('tambahMenu');
+Route::get('/tambahMenu', [OrdersController::class, 'show'])  ->middleware(['auth', 'verified'])->name('tambahMenu');
+
+
+Route::get('/dashboard', [OrdersController::class, 'index']) ->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
