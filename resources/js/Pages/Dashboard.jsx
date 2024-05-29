@@ -3,8 +3,8 @@ import { Head, Link } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
-export default function Dashboard({ auth, menus, menuDetail }) {
-    const [orderDetails, setOrderDetails] = useState(menuDetail || []);
+export default function Dashboard({ auth, menus, menuDetails }) {
+   
     console.log('Data Menu', menus)
 
     const addMenu = () => {
@@ -49,8 +49,8 @@ export default function Dashboard({ auth, menus, menuDetail }) {
                 <div className="h-screen top-0 bg-white w-4/12 shadow-l fixed right-0 p-3">
                     <h1 className="font-extrabold text-3xl mb-3 mt-3">Order</h1>
                     <div className="h-3/4 overflow-x-hidden">
-                        {orderDetails && orderDetails.length > 0 ? (
-                            orderDetails.map((detail, i) => (
+                        {menuDetails && menuDetails.length > 0 ? (
+                            menuDetail.map((detail, i) => (
                                 <div key={i} className="outline-1 rounded-lg shadow-md flex justify-between p-2">
                                     <div>
                                         <h1 className="font-semibold">{detail.nama_menu}</h1>

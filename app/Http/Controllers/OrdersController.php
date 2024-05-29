@@ -75,7 +75,7 @@ class OrdersController extends Controller
         $datas = Menusmodel::orderBy('id')->get();
         return Inertia::render('Dashboard', [
             'menus' => $datas,
-            'menuDetail' => $detail
+            'menuDetails' => $detail
         ]);
     }
 
