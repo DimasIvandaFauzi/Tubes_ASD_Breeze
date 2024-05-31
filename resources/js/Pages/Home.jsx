@@ -6,7 +6,7 @@ const Home = (props) => {
         <>
             <div className=" bg-white">
                 <div className=" bg-white h-screen md:flex flex-row md:justify-around justify-center items-center">
-                    <div className=" text-black md:w-2/5 mt-8 w-3/4">
+                    <div className=" text-extra-bold md:w-2/5 mt-8 w-3/4">
                         <h1 className="md:text-5xl text-5xl font-[800] ">
                             Selamat Datang di Web Kasir Pens!
                         </h1>

@@ -2,10 +2,14 @@ import Navbar from "@/Components/Navbar";
 import { Head, Link } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
+import TextInput from "@/Components/TextInput";
+import PrimaryButton from "@/Components/PrimaryButton";
+
+
 
 export default function Dashboard({ auth, menus, menuDetails }) {
-   
-    console.log('Data Menu', menus)
+    const [open, setOpen] = useState(false)
+    console.log('Data Menu', menus, auth)
 
     const addMenu = () => {
         Inertia.post('/tambahMenu', { menu_id: menu.id, jumlah: 1 }, {
@@ -17,11 +21,34 @@ export default function Dashboard({ auth, menus, menuDetails }) {
 
     return (
         <>
-            <div className="flex w-full">
+            <div className="flex w-full font-sans">
+                {open && (
+                <div className=" h-screen w-full fixed z-50 bg-black/30 flex items-center justify-center cursor-pointer" onClick={() => setOpen(false)}>
+                    <div className="h-3/4 w-2/5 bg-white rounded-lg shadow-md flex flex-col items-center justify-center cursor-default pb-4" onClick={(e) =>e.stopPropagation()}>
+                        <div className="bg-[url(./img/BG-Receipt.jpg)] h-3/5 rounded-t-lg w-full bg-cover bg-center "></div>
+                        <div className="">
+                            <div className=" mb-4 mt-3">
+                                <h1 className=" font-extra-bold text-4xl">Pesanan Hampir di Buat!</h1>
+                            </div>
+                            <div className=" capitalize mb-2">
+                                <span>Nama Kasir : {auth.user.name}</span>
+                            </div>
+                            <div className=" mb-4">        
+                                <span className="font-medium pr-1 ">Nama Pelanggan:</span>
+                                <TextInput className="border-black border"/>
+                            </div>
+                            <div className=" flex justify-center items-center">
+                                <PrimaryButton className="bg-black mt-2">Buat Pesanan</PrimaryButton> 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                )}
                 <div className="h-screen w-8/12 overflow-y-scroll overflow-x-hidden scrollbar">
                     <Head title="Dashboard" />
                     <Navbar user={auth.user} />
-                    <h1 className="font-extrabold text-Black text-4xl mt-5 ml-11">Menu</h1>
+                    <h1 className="font-extra-bold text-Black text-4xl mt-5 ml-11">Menu</h1>
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-wrap">
                         {menus && menus.length > 0 ? (
                             menus.map((menu, i) => (
@@ -47,7 +74,7 @@ export default function Dashboard({ auth, menus, menuDetails }) {
                 </div>
 
                 <div className="h-screen top-0 bg-white w-4/12 shadow-l fixed right-0 p-3">
-                    <h1 className="font-extrabold text-3xl mb-3 mt-3">Order</h1>
+                    <h1 className="font-extra-bold text-3xl mb-3 mt-3">Order</h1>
                     <div className="h-3/4 overflow-x-hidden">
                         {menuDetails && menuDetails.length > 0 ? (
                             menuDetail.map((detail, i) => (
@@ -71,7 +98,7 @@ export default function Dashboard({ auth, menus, menuDetails }) {
                         )}
                     </div>
                     <div className="flex justify-center items-center w-full">
-                        <button className="bg-gray-800 items-center text-center font-bold w-full rounded-full text-white py-1 mt-4 text-lg">Buat</button>
+                        <button className="bg-gray-800 items-center text-center font-bold w-full rounded-full text-white py-1 mt-4 text-lg" onClick={() =>setOpen(true)}>Buat</button>
                     </div>
                 </div>
             </div>
