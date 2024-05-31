@@ -16,7 +16,7 @@ export default function Authenticated({ user, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <span className='font-extrabold'>LOGO</span>
+                                    <span className='font-extra-bold'>LOGO</span>
                                 </Link>
                             </div>
 
