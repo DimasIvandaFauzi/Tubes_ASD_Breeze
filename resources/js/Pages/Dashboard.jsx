@@ -24,7 +24,7 @@ export default function Dashboard({ auth, menus, menuDetails }) {
             <div className="flex w-full font-sans">
                 {open && (
                 <div className=" h-screen w-full fixed z-50 bg-black/30 flex items-center justify-center cursor-pointer" onClick={() => setOpen(false)}>
-                    <div className="h-3/4 w-2/5 bg-white rounded-lg shadow-md flex flex-col items-center justify-center cursor-default pb-4" onClick={(e) =>e.stopPropagation()}>
+                    <div className=" h-96 w-2/6 bg-white rounded-lg shadow-md flex flex-col items-center justify-center cursor-default pb-4" onClick={(e) =>e.stopPropagation()}>
                         <div className="bg-[url(./img/BG-Receipt.jpg)] h-3/5 rounded-t-lg w-full bg-cover bg-center "></div>
                         <div className="">
                             <div className=" mb-4 mt-3">
