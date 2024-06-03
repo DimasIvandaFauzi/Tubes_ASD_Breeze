@@ -12,7 +12,7 @@ const QueueDetail = ({user}) => {
                         <p className=" capitalize">Kasir : {user.name}</p>
                         <span>--------------------</span>
                         <p>List Menu Orderan</p>
-                        <table className=" table-auto w-full text-left mt-2">
+                        <table className=" table-auto w-full mt-2">
                             <thead>
                                 <tr className="">
                                     <th>Menu</th>

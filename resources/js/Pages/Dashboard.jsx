@@ -7,14 +7,16 @@ import PrimaryButton from "@/Components/PrimaryButton";
 
 
 
-export default function Dashboard({ auth, menus, menuDetails }) {
+export default function Dashboard({ auth, menus, menuDetails, flash }) {
     const [open, setOpen] = useState(false)
     console.log('Data Menu', menus, auth)
+    
 
     const addMenu = () => {
-        Inertia.post('/tambahMenu', { menu_id: menu.id, jumlah: 1 }, {
+        Inertia.post('/tambahMenu', { menu_id: menus.id, jumlah: 1 }, {
             onSuccess: (page) => {
                 setOrderDetails(page.props.menuDetail);
+                console.log("flash", flash);
             }
         });
     };
@@ -25,17 +27,10 @@ export default function Dashboard({ auth, menus, menuDetails }) {
                 {open && (
                 <div className=" h-screen w-full fixed z-50 bg-black/30 flex items-center justify-center cursor-pointer" onClick={() => setOpen(false)}>
                     <div className=" h-96 w-2/6 bg-white rounded-lg shadow-md flex flex-col items-center justify-center cursor-default pb-4" onClick={(e) =>e.stopPropagation()}>
-                        <div className="bg-[url(./img/BG-Receipt.jpg)] h-3/5 rounded-t-lg w-full bg-cover bg-center "></div>
+                        <div className="bg-[url(./img/BLU.svg)] h-3/5 rounded-t-lg w-full bg-contain bg-no-repeat bg-center "></div>
                         <div className="">
                             <div className=" mb-4 mt-3">
-                                <h1 className=" font-extra-bold text-4xl">Pesanan Hampir di Buat!</h1>
-                            </div>
-                            <div className=" capitalize mb-2">
-                                <span>Nama Kasir : {auth.user.name}</span>
-                            </div>
-                            <div className=" mb-4">        
-                                <span className="font-medium pr-1 ">Nama Pelanggan:</span>
-                                <TextInput className="border-black border"/>
+                                <h1 className=" font-extra-bold text-4xl">Waktunya untuk bayar!</h1>
                             </div>
                             <div className=" flex justify-center items-center">
                                 <PrimaryButton className="bg-black mt-2">Buat Pesanan</PrimaryButton> 
@@ -48,7 +43,8 @@ export default function Dashboard({ auth, menus, menuDetails }) {
                 <div className="h-screen w-8/12 overflow-y-scroll overflow-x-hidden scrollbar">
                     <Head title="Dashboard" />
                     <Navbar user={auth.user} />
-                    <h1 className="font-extra-bold text-Black text-4xl mt-5 ml-11">Menu</h1>
+                    <h1 className="font-extra-bold text-Black text-4xl text-center  mt-10 mb-2">Menu Makanan & Minuman Berkah Jaya</h1>
+                    <p className="font-bold text-center mb-10 text-xl">Murah, Sehat & Menyehatkan</p>
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-wrap">
                         {menus && menus.length > 0 ? (
                             menus.map((menu, i) => (
@@ -75,7 +71,15 @@ export default function Dashboard({ auth, menus, menuDetails }) {
 
                 <div className="h-screen top-0 bg-white w-4/12 shadow-l fixed right-0 p-3">
                     <h1 className="font-extra-bold text-3xl mb-3 mt-3">Order</h1>
-                    <div className="h-3/4 overflow-x-hidden">
+                    <div className=" font-medium text-lg">
+                        <span>Nama Kasir : </span>
+                        <input type="text" className="capitalize underline" defaultValue={auth.user.name} />
+                    </div>
+                    <div className="font-medium mb-1 text-lg">
+                        <span>Nama Pelanggan : </span>
+                        <input type="text" className="border border-black px-1" />
+                    </div>
+                    <div className="h-4/6 overflow-x-hidden">
                         {menuDetails && menuDetails.length > 0 ? (
                             menuDetail.map((detail, i) => (
                                 <div key={i} className="outline-1 rounded-lg shadow-md flex justify-between p-2">
