@@ -40,29 +40,29 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'menu_id' => 'required|exists:menus,id',
-            'jumlah' => 'required|integer|min:1',
-        ]);
-
-        $menu = MenusModel::find($validatedData['menu_id']);
-        $total = $menu->harga * $validatedData['jumlah'];
-
-        $user = Auth::user();
+        $user = $request->user();
         $order = Orders::create([
-            'user_id' => $user,
+            'user_id' => $request->user()->id,
+            'nama_kasir' => $user['name'],
+            'nama_pelanggan' => $user['name'],
         ]);
-
-        $detail = new DetailOrders();
-        $detail->order_id = $order->id;
-        $detail->menu_id = $menu->id;
-        $detail->nama_menu = $menu->nama;
-        $detail->jumlah = $validatedData['jumlah'];
-        $detail->total = $total;
-        $detail->save();
-        return response()->json(['message' => 'Detail order berhasil disimpan', 'detail_order'=>$detail],201);
+        
         
 
+
+        // $detail = $request->detail_orders;
+        // $menuid = MenusModel::with('menus')->find('id');
+        // // foreach ($request->detail_orders as $detail) {
+       
+        //     DetailOrders::create([
+        //         'order_id' => $order->id,
+        //         'menu_id' => $menuid,
+        //         'jumlah' => $detail['jumlah'],
+        //         'total' => $detail['total'],
+        //     ]);
+        // // }
+
+        return redirect()->route('dashboard');
 
     }
 

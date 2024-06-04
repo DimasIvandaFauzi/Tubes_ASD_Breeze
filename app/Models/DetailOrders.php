@@ -9,7 +9,12 @@ class DetailOrders extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['jumlah'];
+    protected $fillable = [
+        'order_id',
+        'menu_id',
+        'jumlah',
+        'total'
+    ];
     public function orders(){
         return $this->belongsTo(Orders::class);
     }

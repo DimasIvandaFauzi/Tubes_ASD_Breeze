@@ -77,7 +77,7 @@ export default function Dashboard({ auth, menus, menuDetails, flash }) {
                     </div>
                     <div className="font-medium mb-1 text-lg">
                         <span>Nama Pelanggan : </span>
-                        <input type="text" className="border border-black px-1" />
+                        <input type="text" className="border border-black px-1"/>
                     </div>
                     <div className="h-4/6 overflow-x-hidden">
                         {menuDetails && menuDetails.length > 0 ? (
